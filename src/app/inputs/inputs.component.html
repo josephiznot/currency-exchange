@@ -1,16 +1,15 @@
 <div class="inputs-container flex-row">
   <aside class="flex-column">
-    <input placeholder="from">
-    <input placeholder="to">
+    <input value=1 placeholder="from">
+    <input value={{this.currencyService.rate}} placeholder="to">
   </aside>
+  {{header}}
   <aside class="flex-column">
-    <select>
-      <option>AYEE</option>
-      <option>WOW</option>
+    <select name="from" value="{{currency}}" (change)="handleClick($event)">
+      <option *ngFor="let currency of currencies">{{currency}}</option>
     </select>
-    <select>
-      <option>AYEE</option>
-      <option>WOW</option>
+    <select name="to" (change)="handleClick($event)">
+      <option value="{{currency}}" *ngFor="let currency of currencies">{{currency}}</option>
     </select>
   </aside>
 </div>

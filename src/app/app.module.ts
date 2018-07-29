@@ -8,6 +8,8 @@ import { DataComponent } from "./data/data.component";
 import { GraphComponent } from "./graph/graph.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms"; // <-- NgModel lives here
+import { CurrencyService } from "./currency.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,8 +19,8 @@ import { HttpClientModule } from "@angular/common/http";
     GraphComponent,
     InputsComponent
   ],
-  imports: [BrowserModule, HttpClientModule],
-  providers: [],
+  imports: [BrowserModule, HttpClientModule, FormsModule],
+  providers: [CurrencyService], //not sure if this is necessary...
   bootstrap: [AppComponent]
 })
 export class AppModule {}
