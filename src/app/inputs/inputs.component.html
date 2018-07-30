@@ -1,7 +1,8 @@
 <div class="inputs-container flex-row">
   <aside class="flex-column">
-    <input value=1 placeholder="from">
-    <input value={{this.currencyService.rate}} placeholder="to">
+    <h1>{{vals | onlyNumbers}}</h1>
+    <input placeholder="from">
+    <input [(ngModel)]="vals" value={{this.currencyService.rate}} placeholder="to">
   </aside>
   {{header}}
   <aside class="flex-column">

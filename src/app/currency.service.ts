@@ -11,7 +11,7 @@ export class CurrencyService {
   to: string = "AUD";
   from: string = "AUD";
   rate: any = 1;
-  selected({ target }) {
+  selected({ target }: any) {
     this[target.name] = target.value;
     console.log(this[target.name]);
     this.http
@@ -25,17 +25,6 @@ export class CurrencyService {
         this.rate = Math.round(this.rate * 100) / 100; //ROUND 2 DECIMAL PLACES
         console.log(this.rate);
       });
-  }
-  getSelected(val) {
-    console.log("getSelected", this[val]);
-    return this[val];
-  }
-  getRate() {
-    return this.http.get<Currency>(
-      `https://exchangeratesapi.io/api/latest?base=${this.from}&symbols=${
-        this.to
-      }`
-    );
   }
   getCurrencies() {
     return this.http.get<Currency>("https://exchangeratesapi.io/api/latest");

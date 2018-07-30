@@ -22,4 +22,10 @@ export class InputsComponent implements OnInit {
     this.currencyService.selected(event);
     // this.currencyService.selected(event.target.name, event.target.value);
   }
+  handleChange(event): void {
+    console.log("its working!!!");
+  }
+  ngOnChanges(changes: any) {
+    console.log(changes);
+  }
 }
