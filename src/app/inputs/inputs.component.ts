@@ -20,12 +20,8 @@ export class InputsComponent implements OnInit {
   header: string;
   handleClick(event): void {
     this.currencyService.selected(event);
-    // this.currencyService.selected(event.target.name, event.target.value);
   }
-  handleChange(event): void {
-    console.log("its working!!!");
-  }
-  ngOnChanges(changes: any) {
-    console.log(changes);
+  keyUp(val) {
+    console.log(val);
   }
 }

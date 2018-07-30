@@ -7,13 +7,17 @@ import { Currency } from "./currency";
   providedIn: "root"
 })
 export class CurrencyService {
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
   to: string = "AUD";
   from: string = "AUD";
   rate: any = 1;
+  fromInput: string;
+  toInput: string;
   selected({ target }: any) {
+    if (!this.fromInput || !this.toInput) {
+    }
+
     this[target.name] = target.value;
-    console.log(this[target.name]);
     this.http
       .get(
         `https://exchangeratesapi.io/api/latest?base=${this.from}&symbols=${
@@ -28,5 +32,8 @@ export class CurrencyService {
   }
   getCurrencies() {
     return this.http.get<Currency>("https://exchangeratesapi.io/api/latest");
+  }
+  handleChange({ name, value }) {
+    this[name] = value;
   }
 }
