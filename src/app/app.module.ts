@@ -10,7 +10,6 @@ import { InputsComponent } from "./inputs/inputs.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms"; // <-- NgModel lives here
 import { CurrencyService } from "./currency.service";
-import { OnlyNumbersPipe } from './only-numbers.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,8 +17,7 @@ import { OnlyNumbersPipe } from './only-numbers.pipe';
     HeaderComponent,
     DataComponent,
     GraphComponent,
-    InputsComponent,
-    OnlyNumbersPipe
+    InputsComponent
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [CurrencyService], //not sure if this is necessary...
