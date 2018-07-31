@@ -42,7 +42,7 @@ export class CurrencyService {
   }
   handleChange({ name, value }) {
     console.log(value.length);
-    if (value.length == 0 || value == 0) {
+    if (value.length == 0 || value <= 0) {
       this.warningActive = true; //throw error message
     } else {
       this.warningActive = false; //user input should rid error message

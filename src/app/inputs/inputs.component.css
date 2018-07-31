@@ -3,3 +3,10 @@
   height: 81px;
   border: black 1px solid;
 }
+.input-placeholder,
+.disabled {
+  color: #878787;
+}
+.inputs {
+  height: 70px;
+}

@@ -34,9 +34,9 @@ export class GraphComponent implements OnInit {
       layout: {
         name: "preset",
         positions: {
-          a: { x: -2, y: 4 },
-          b: { x: -6, y: 8 },
-          c: { x: -10, y: 12 }
+          a: { x: 2, y: -856.9714629 },
+          b: { x: 6, y: -862.3663332 },
+          c: { x: 10, y: -857.7800652 }
         }
       },
       style: [
