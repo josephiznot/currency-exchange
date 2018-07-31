@@ -1,14 +1,15 @@
 <div class="inputs-container flex-row">
   <aside class="flex-column">
-    <input type="number" value={{currencyService.fromInput}} placeholder="from" #fromInput name="fromInput" (keyup)="currencyService.handleChange(fromInput)">
-    <input type="number" value={{currencyService.toInput}} name="toInput" placeholder="to" #toInput (keyup)="currencyService.handleChange(toInput)">
+    <input type="number" value='{{currencyService.fromInput | roundNumber }}' placeholder="from" #fromInput name="fromInput"
+      (keyup)="currencyService.handleChange(fromInput)">
+    <input type="number" value='{{currencyService.toInput | roundNumber }}' name="toInput" placeholder="to" #toInput (keyup)="currencyService.handleChange(toInput)">
   </aside>
   <aside class="flex-column ">
     <select name="from" (change)="currencyService.selected($event)">
-      <option *ngFor="let currency of currencies ">{{currency}}</option>
+      <option *ngFor="let currency of currencies " [disabled]="currencyService.warningActive">{{currency}}</option>
     </select>
     <select name="to" (change)="currencyService.selected($event)">
-      <option value="{{currency}} " *ngFor="let currency of currencies ">{{currency}}</option>
+      <option value="{{currency}} " *ngFor="let currency of currencies " [disabled]="currencyService.warningActive">{{currency}}</option>
     </select>
   </aside>
 </div>

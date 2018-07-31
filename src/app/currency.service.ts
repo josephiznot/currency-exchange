@@ -13,8 +13,8 @@ export class CurrencyService {
   fromHeader: number = 1;
   toHeader: number = 1;
   rate: number = 1;
-  fromInput: number;
-  toInput: number;
+  fromInput: number = 1;
+  toInput: number = 1;
   warningActive: boolean = false;
 
   selected(event: any) {
@@ -41,6 +41,12 @@ export class CurrencyService {
     return this.http.get<Currency>("https://exchangeratesapi.io/api/latest");
   }
   handleChange({ name, value }) {
+    console.log(value.length);
+    if (value.length == 0 || value == 0) {
+      this.warningActive = true; //throw error message
+    } else {
+      this.warningActive = false; //user input should rid error message
+    }
     this[name] = +value; //update fromInput or toInput
     if (name == "fromInput") {
       return (this.toInput = this.rate * this[name]);

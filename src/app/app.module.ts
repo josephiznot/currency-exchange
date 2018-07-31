@@ -8,7 +8,8 @@ import { DataComponent } from "./data/data.component";
 import { GraphComponent } from "./graph/graph.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms"; // <-- NgModel lives here
+import { FormsModule } from "@angular/forms";
+import { RoundNumberPipe } from './round-number.pipe'; // <-- NgModel lives here
 // import { CurrencyService } from "./currency.service";
 // import { MessagesService } from "./messages.service";
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from "@angular/forms"; // <-- NgModel lives here
     HeaderComponent,
     DataComponent,
     GraphComponent,
-    InputsComponent
+    InputsComponent,
+    RoundNumberPipe
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [], //not sure if this is necessary...
