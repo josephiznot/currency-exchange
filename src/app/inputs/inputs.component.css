@@ -1,7 +1,6 @@
 .inputs-container {
   width: 300px;
   height: 81px;
-  border: black 1px solid;
 }
 .input-placeholder,
 .disabled {

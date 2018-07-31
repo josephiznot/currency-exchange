@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, forkJoin } from "rxjs";
 import { Currency } from "./currency";
 
 @Injectable({
@@ -23,6 +23,7 @@ export class CurrencyService {
       return;
     }
     this.warningActive = false; //toggle warning
+
     this[event.target.name] = event.target.value; //updates currency symbol(from or to)
     this.http
       .get(
@@ -52,5 +53,33 @@ export class CurrencyService {
       return (this.toInput = this.rate * this[name]);
     }
     return (this.fromInput = this[name] / this.rate);
+  }
+
+  getPoints() {
+    function formatDate(obj) {
+      return JSON.stringify(obj)
+        .split("")
+        .splice(1, 10)
+        .join("");
+    }
+    function getDates() {
+      let arr = [];
+      for (let i = 30; i >= 0; i--) {
+        arr.push(
+          formatDate(new Date(new Date().setDate(new Date().getDate() - i)))
+        );
+      }
+      return arr;
+    }
+    let arr = getDates(); //returns array of dates
+    return forkJoin(
+      arr.map(e => {
+        return this.http.get(
+          `https://exchangeratesapi.io/api/${e}?base=${this.from}&symbols=${
+            this.to
+          }`
+        );
+      })
+    );
   }
 }

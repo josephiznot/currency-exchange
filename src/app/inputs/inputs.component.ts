@@ -12,7 +12,6 @@ export class InputsComponent implements OnInit {
   constructor(public currencyService: CurrencyService) {}
   ngOnInit() {
     this.currencyService.getCurrencies().subscribe(data => {
-      console.log(data);
       this.currencies = Object.keys(data.rates);
       this.currencies.push("EUR");
     });
