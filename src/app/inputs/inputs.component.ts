@@ -18,9 +18,6 @@ export class InputsComponent implements OnInit {
     });
   }
   header: string;
-  handleClick(event): void {
-    this.currencyService.selected(event);
-  }
   keyUp(val) {
     console.log(val);
   }
