@@ -23,7 +23,7 @@ export class CurrencyService {
       return;
     }
     this.warningActive = false; //toggle warning
-
+    //proceed
     this[event.target.name] = event.target.value; //updates currency symbol(from or to)
     this.http
       .get(
@@ -42,7 +42,6 @@ export class CurrencyService {
     return this.http.get<Currency>("https://exchangeratesapi.io/api/latest");
   }
   handleChange({ name, value }) {
-    console.log(value.length);
     if (value.length == 0 || value <= 0) {
       this.warningActive = true; //throw error message
     } else {
@@ -56,12 +55,14 @@ export class CurrencyService {
   }
 
   getPoints() {
+    //String(new Date())
     function formatDate(obj) {
       return JSON.stringify(obj)
         .split("")
         .splice(1, 10)
         .join("");
     }
+
     function getDates() {
       let arr = [];
       for (let i = 30; i >= 0; i--) {
@@ -71,8 +72,10 @@ export class CurrencyService {
       }
       return arr;
     }
+
     let arr = getDates(); //returns array of dates
     return forkJoin(
+      //Promise.all()
       arr.map(e => {
         return this.http.get(
           `https://exchangeratesapi.io/api/${e}?base=${this.from}&symbols=${

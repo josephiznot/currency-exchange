@@ -43,6 +43,7 @@ export class GraphComponent implements OnInit {
   ngOnInit() {
     //NEED TO RERENDER WHEN SELECTIONS CHANGE
     let obs = this.currencyService.getPoints().subscribe(response => {
+      console.log(response);
       this.rates = response;
       response.forEach((e: any, i: number) => {
         this.positions[this.alphabet[i]] = {
@@ -80,6 +81,7 @@ export class GraphComponent implements OnInit {
           { data: { id: "x" } },
           { data: { id: "y" } },
           { data: { id: "z" } }
+          //****EDGES***
           // {
           //   data: {
           //     id: "ab",

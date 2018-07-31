@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MessagesService } from "../messages.service";
+// import { MessagesService } from "../messages.service";
 
 @Component({
   selector: "app-messages",
@@ -7,7 +7,7 @@ import { MessagesService } from "../messages.service";
   styleUrls: ["./messages.component.css"]
 })
 export class MessagesComponent implements OnInit {
-  constructor(public messagesService: MessagesService) {}
+  constructor() {}
   warning: string = "hello";
   ngOnInit() {
     //   this.warning = this.messagesService.warning;
